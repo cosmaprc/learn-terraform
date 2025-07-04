@@ -1,31 +1,28 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-provider "aws" {
-  region = var.region
+provider "grafana" {
+  alias = "cloud"
+
+  url  = var.grafana_url
+  auth = var.grafana_tf_auth
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
+resource "grafana_folder" "ElasticSearch" {
+  provider = grafana.cloud
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
+  title = "ElasticSearch"
 }
 
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+resource "grafana_folder" "InfluxDB" {
+  provider = grafana.cloud
 
-  tags = {
-    Name = var.instance_name
-  }
+  title = "InfluxDB"
+}
+
+resource "grafana_folder" "AWS" {
+  provider = grafana.cloud
+
+  title = "AWS"
 }

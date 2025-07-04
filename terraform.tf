@@ -4,7 +4,7 @@
 terraform {
 
   cloud {
-    organization = "organization-name"
+    organization = "cosminpurcherea-grafana-cloud"
 
     workspaces {
       name = "learn-terraform"
@@ -12,9 +12,9 @@ terraform {
   }
 
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.31.0"
+    grafana = {
+      source  = "grafana/grafana"
+      version = ">= 2.9.0"
     }
   }
 
