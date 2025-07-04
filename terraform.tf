@@ -11,6 +11,7 @@ terraform {
   #   }
   # }
 
+  # New comment
   required_providers {
     grafana = {
       source  = "grafana/grafana"
