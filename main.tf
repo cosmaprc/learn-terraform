@@ -26,3 +26,9 @@ resource "grafana_folder" "AWS" {
 
   title = "AWS"
 }
+
+resource "grafana_folder" "Couchbase" {
+  provider = grafana.cloud
+
+  title = "Couchbase"
+}
