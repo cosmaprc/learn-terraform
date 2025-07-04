@@ -3,13 +3,13 @@
 
 terraform {
 
-  cloud {
-    organization = "cosminpurcherea-grafana-cloud"
+  # cloud {
+  #   organization = "cosminpurcherea-grafana-cloud"
 
-    workspaces {
-      name = "learn-terraform"
-    }
-  }
+  #   workspaces {
+  #     name = "learn-terraform"
+  #   }
+  # }
 
   required_providers {
     grafana = {
