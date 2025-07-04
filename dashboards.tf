@@ -21,3 +21,11 @@ resource "grafana_dashboard" "aws" {
   config_json = file("${path.module}/dashboards/aws/${each.key}")
   folder      = grafana_folder.AWS.id
 }
+
+resource "grafana_dashboard" "couchbase" {
+  provider = grafana.cloud
+
+  for_each    = fileset("${path.module}/dashboards/couchbase", "*.json")
+  config_json = file("${path.module}/dashboards/couchbase/${each.key}")
+  folder      = grafana_folder.Couchbase.id
+}
